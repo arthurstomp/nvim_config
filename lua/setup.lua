@@ -55,7 +55,6 @@ local options = {
   indent = { enable = true },
 }
 require'nvim-treesitter.configs'.setup(options)
--- require'iron'
 
 local neogit = require('neogit')
 neogit.setup {}
