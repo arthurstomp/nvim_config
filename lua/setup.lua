@@ -6,7 +6,11 @@ require('lualine').setup({
   },
 })
 
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+  filters = {
+    dotfiles = true,
+  }
+})
 require("bufferline").setup()
 require('gitsigns').setup()
 require('nvim_comment').setup()
