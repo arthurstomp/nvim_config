@@ -19,7 +19,6 @@ vim.opt.smartindent = true
 require('plugins')
 require('setup')
 require('lsp_zero')
--- require('cmp_setup')
 require('maps')
 -- require('null_ls')
 -- require("dap_config")
