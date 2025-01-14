@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
     }
   }
   use 'SmiteshP/nvim-navic'
-  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', tag = "v4.9.0", requires = 'nvim-tree/nvim-web-devicons' }
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
