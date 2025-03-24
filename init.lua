@@ -1,5 +1,6 @@
 -- Change leader to space
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 -- vim.o.background = 'dark'
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
@@ -15,9 +16,15 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
+vim.opt.conceallevel = 2
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 99
 
-require('plugins')
-require('setup')
-require('lsp_zero')
+-- require("lazy_config")
+-- require("lazy_plugins")
+require('lazy_setup')
 require('maps')
-require ('treesitter_fold')
+
+vim.cmd[[colorscheme tokyonight-moon]]
+vim.notify = require('notify')
