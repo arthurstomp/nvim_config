@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -38,6 +38,7 @@ require("lazy").setup({
     require('lazy_plugins/colors').tokyonight,
     require('lazy_plugins/colors').ayu,
     require('lazy_plugins/colors').navic,
+    { 'nvim-pack/nvim-spectre', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-lua/plenary.nvim' },
     {
       'nvim-tree/nvim-tree.lua',
@@ -48,7 +49,8 @@ require("lazy").setup({
         require("nvim-tree").setup()
       end
     },
-    { 'akinsho/bufferline.nvim',
+    {
+      'akinsho/bufferline.nvim',
       dependencies = 'nvim-tree/nvim-web-devicons',
       config = function()
         require("bufferline").setup()
