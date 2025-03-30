@@ -7,6 +7,7 @@ local M = {
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
+        { name = 'luasnip' }
       },
       mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -15,7 +16,8 @@ local M = {
       }),
       snippet = {
         expand = function(args)
-          vim.snippet.expand(args.body)
+          -- vim.snippet.expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       },
     })
