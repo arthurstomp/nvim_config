@@ -19,6 +19,7 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       require('snippets/all')
       require('snippets/ruby')
+      require('snippets/typescript')
     end
   }
 }
