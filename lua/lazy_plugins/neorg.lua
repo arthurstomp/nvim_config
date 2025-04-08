@@ -6,13 +6,15 @@ local M = {
     require('neorg').setup {
       load = {
         ["core.defaults"] = {},
+        ["core.export"] = {},
         ["core.concealer"] = {},
         ["core.integrations.telescope"] = {},
         ["core.dirman"] = {
           config = {
             workspaces = {
               journal = "~/journal",
-              rayse = "~/work/rayse/journal"
+              rayse = "~/work/rayse/journal",
+              houndsy = "~/work/houndsy/journal"
             },
             default_workspace = 'journal'
           }
