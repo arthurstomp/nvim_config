@@ -68,7 +68,6 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
 -- Comment
 map('n', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
 map('v', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
-map('n', '<Leader>ng', ':Neogit<CR>')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>T', ':Telescope<CR>')

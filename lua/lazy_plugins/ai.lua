@@ -1,5 +1,6 @@
 local gp = {
   "robitx/gp.nvim",
+  lazy = true,
   config = function()
     local conf = {
       image = {
@@ -15,6 +16,7 @@ local gp = {
 
 local aider = {
   "joshuavial/aider.nvim",
+  lazy = true,
   opts = {
     -- your configuration comes here
     -- if you don't want to use the default settings
@@ -26,6 +28,7 @@ local aider = {
 
 local aider2 = {
   "GeorgesAlkhouri/nvim-aider",
+  lazy = true,
   cmd = {
     "AiderTerminalToggle", "AiderHealth",
   },

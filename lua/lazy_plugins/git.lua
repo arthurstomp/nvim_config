@@ -1,5 +1,9 @@
 local neogit = {
   "NeogitOrg/neogit",
+  lazy = true,
+  keys = {
+    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit"}
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",         -- required
     "nvim-telescope/telescope.nvim", -- optional
@@ -28,6 +32,7 @@ local fugitive = {
     "Glgrep",
     "Gedit"
   },
+  lazy = true,
   ft = { "fugitive" }
 }
 
