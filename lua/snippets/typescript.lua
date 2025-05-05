@@ -26,7 +26,9 @@ local snippets = {
         rep(3)
       }
     )
-  )
+  ),
+  s('lint-disable', t('// eslint-disable-next-line')),
+  s('ts-disable', t('// @ts-ignore: Unreachable code error'))
 }
 
 ls.add_snippets('typescript', snippets)

@@ -113,33 +113,54 @@ vim.keymap.set('n', '<leader>as', ':GpStop<CR>')
 vim.keymap.set('i', '<F8>', 'least words needed')
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
-    desc = "Toggle Spectre"
+  desc = "Toggle Spectre"
 })
 vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word"
+  desc = "Search current word"
 })
 vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-    desc = "Search current word"
+  desc = "Search current word"
 })
 vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-    desc = "Search on current file"
+  desc = "Search on current file"
 })
 
 local ls = require('luasnip')
-vim.keymap.set({"i", "s"}, "<c-k>", function()
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
-end, {silent = true})
+end, { silent = true })
 
-vim.keymap.set({"i", "s"}, "<c-j>", function()
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
-end, {silent = true})
+end, { silent = true })
 
-vim.keymap.set({"i", "s"}, "<c-l>", function()
+vim.keymap.set({ "i", "s" }, "<c-l>", function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
 end)
+
+vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { desc = "Pin buffer to beginning of line" })
+vim.keymap.set('n', '<leader>bc', ':BufferLineCloseOthers<CR>', { desc = "Close all buffers but one" })
+
+local replacementStr = ":s/?: string;/: z.string().optional(),/ |" ..
+    " '[,']" ..
+    "s/?: string | null;/: z.string().nullable().optional(),/ |" ..
+    " '[,']" ..
+    "s/?: number;/: z.number().optional(),/ |" ..
+    " '[,']" ..
+    "s/?: number | null;/: z.number().nullable().optional(),/ |" ..
+    " '[,']" ..
+    "s/?: boolean;/: z.boolean().optional(),/" ..
+    "<CR>"
+vim.keymap.set('v', '<leader>xtz', replacementStr)
+
+-- Show all diagnostics on current line in floating window
+vim.api.nvim_set_keymap(
+  'n', '<Leader>i', ':lua vim.diagnostic.open_float()<CR>',
+  { noremap = true, silent = true }
+)

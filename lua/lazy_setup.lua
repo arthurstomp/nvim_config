@@ -32,6 +32,7 @@ require("lazy").setup({
     require('lazy_plugins/git').neogit,
     require('lazy_plugins/git').fugitive,
     require('lazy_plugins/neorg'),
+    require('lazy_plugins/dashboard'),
     require('lazy_plugins/autocomplete'),
     require('lazy_plugins/luasnip').luasnip,
     require('lazy_plugins/ai').gp,
@@ -107,7 +108,8 @@ require("lazy").setup({
       end,
     },
     { "rcarriga/nvim-notify" },
-    { 'wakatime/vim-wakatime', lazy = false },
-    { "karb94/neoscroll.nvim", opts = {} }
+    { 'wakatime/vim-wakatime',      lazy = false },
+    { "karb94/neoscroll.nvim",      opts = {} },
+    { "gennaro-tedesco/nvim-peekup" },
   },
 })
