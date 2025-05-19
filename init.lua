@@ -28,3 +28,9 @@ require('maps')
 
 vim.cmd[[colorscheme tokyonight-moon]]
 vim.notify = require('notify')
+vim.filetype.add {
+  pattern = {
+    ['openapi.ya?ml'] = 'yaml.openapi',
+    ['.*.?openapi.json'] = 'json.openapi',
+  },
+}

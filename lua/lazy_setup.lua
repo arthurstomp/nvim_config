@@ -108,8 +108,12 @@ require("lazy").setup({
       end,
     },
     { "rcarriga/nvim-notify" },
-    { 'wakatime/vim-wakatime',      lazy = false },
-    { "karb94/neoscroll.nvim",      opts = {} },
+    { 'wakatime/vim-wakatime', lazy = false },
+    { "karb94/neoscroll.nvim", opts = {} },
     { "gennaro-tedesco/nvim-peekup" },
+    { "brenoprata10/nvim-highlight-colors", config = function()
+      require('nvim-highlight-colors').setup({})
+    end
+    }
   },
 })
