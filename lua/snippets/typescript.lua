@@ -27,6 +27,47 @@ local snippets = {
       }
     )
   ),
+  s('useMemo',
+    fmt(
+      [[
+        const {} = useMemo(() => {{
+          {}
+        }},{})
+      ]],
+      {
+        i(1),
+        i(3),
+        i(2)
+      }
+    )
+  ),
+  s('useCallback',
+    fmt(
+      [[
+        const {} = useCallback(() => {{
+          {}
+        }},{})
+      ]],
+      {
+        i(1),
+        i(3),
+        i(2)
+      }
+    )
+  ),
+  s('useEffect',
+    fmt(
+      [[
+        useEffect(() => {{
+          {}
+        }},{})
+      ]],
+      {
+        i(2),
+        i(1)
+      }
+    )
+  ),
   s('lint-disable', t('// eslint-disable-next-line')),
   s('ts-disable', t('// @ts-ignore: Unreachable code error'))
 }

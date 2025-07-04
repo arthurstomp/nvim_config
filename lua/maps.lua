@@ -164,3 +164,23 @@ vim.api.nvim_set_keymap(
   'n', '<Leader>i', ':lua vim.diagnostic.open_float()<CR>',
   { noremap = true, silent = true }
 )
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader>>', ':tabnext<CR>',
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader><', ':tabprevious<CR>',
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader>x', ':tabclose<CR>',
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+  'n', '<Leader>N', ':tabnew<CR>',
+  { noremap = true, silent = true }
+)
