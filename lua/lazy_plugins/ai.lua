@@ -14,6 +14,16 @@ local gp = {
   end,
 }
 
+local claude = {
+  "greggh/claude-code.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim", -- Required for git operations
+  },
+  config = function()
+    require("claude-code").setup()
+  end
+}
+
 local aider = {
   "joshuavial/aider.nvim",
   lazy = true,
@@ -70,7 +80,8 @@ local aider2 = {
 local M = {
   gp = gp,
   aider = aider,
-  aider2 = aider2
+  aider2 = aider2,
+  claude = claude
 }
 
 return M

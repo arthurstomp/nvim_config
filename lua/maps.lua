@@ -184,3 +184,7 @@ vim.api.nvim_set_keymap(
   'n', '<Leader>N', ':tabnew<CR>',
   { noremap = true, silent = true }
 )
+
+vim.api.nvim_set_keymap('v', '<Leader>w', '"+y', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<Leader>W', '"+Y', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>W', '"+Y', {noremap = true, silent = true})
