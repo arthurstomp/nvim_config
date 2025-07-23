@@ -23,6 +23,7 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
   spec = {
+    require('lazy_plugins.profiler').snack,
     require('lazy_plugins/telescope').telescope_spec,
     require('lazy_plugins/telescope').telescope_fzf_native_spec,
     require('lazy_plugins.lualine'),
