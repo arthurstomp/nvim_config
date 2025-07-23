@@ -23,7 +23,7 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
   spec = {
-    require('lazy_plugins.profiler').snack,
+    require('lazy_plugins.snacks'),
     require('lazy_plugins/telescope').telescope_spec,
     require('lazy_plugins/telescope').telescope_fzf_native_spec,
     require('lazy_plugins.lualine'),
@@ -33,7 +33,6 @@ require("lazy").setup({
     require('lazy_plugins/git').neogit,
     require('lazy_plugins/git').fugitive,
     require('lazy_plugins/neorg'),
-    require('lazy_plugins/dashboard'),
     require('lazy_plugins/autocomplete'),
     require('lazy_plugins/luasnip').luasnip,
     require('lazy_plugins/ai').claude,
@@ -44,15 +43,6 @@ require("lazy").setup({
     require('lazy_plugins/colors').navic,
     { 'nvim-pack/nvim-spectre', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-lua/plenary.nvim' },
-    {
-      'nvim-tree/nvim-tree.lua',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons', -- optional, for file icons
-      },
-      config = function()
-        require("nvim-tree").setup()
-      end
-    },
     {
       'akinsho/bufferline.nvim',
       dependencies = 'nvim-tree/nvim-web-devicons',
@@ -110,12 +100,32 @@ require("lazy").setup({
       end,
     },
     { "rcarriga/nvim-notify" },
-    { 'wakatime/vim-wakatime', lazy = false },
-    { "karb94/neoscroll.nvim", opts = {} },
+    { 'wakatime/vim-wakatime',      lazy = false },
     { "gennaro-tedesco/nvim-peekup" },
-    { "brenoprata10/nvim-highlight-colors", config = function()
-      require('nvim-highlight-colors').setup({})
-    end
+    {
+      "brenoprata10/nvim-highlight-colors",
+      config = function()
+        require('nvim-highlight-colors').setup({})
+      end
+    },
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      enabled = false,
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+      keys = {
+        {
+          "<leader>?",
+          function()
+            require("which-key").show({ global = false })
+          end,
+          desc = "Buffer Local Keymaps (which-key)",
+        },
+      },
     }
   },
 })

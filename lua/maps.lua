@@ -59,7 +59,7 @@ map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = tr
 map('t', '<Esc>', '<C-\\><C-n>')                                                      -- exit
 
 -- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
+-- map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
 -- map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
 
 -- Tagbar
@@ -80,7 +80,7 @@ vim.keymap.set('n', '<leader>tb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>tc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>tx', builtin.git_bcommits, {})
 vim.keymap.set('n', '<leader>ts', builtin.git_status, {})
-vim.keymap.set('n', '<leader>th', ':Telescope harpoon marks<CR>')
+-- vim.keymap.set('n', '<leader>th', ':Telescope harpoon marks<CR>')
 
 
 -- Harpoon maps
@@ -103,14 +103,14 @@ vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>')
 vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>')
 vim.keymap.set('n', '<leader>ns', '<Plug>(neorg.qol.todo-items.todo.task-cycle)')
 
-vim.keymap.set('n', '<leader>at', ':GpChatToggle vsplit<CR>')
-vim.keymap.set('n', '<leader>an', ':GpChatNew vsplit<CR>')
-vim.keymap.set('n', '<leader>ad', ':GpChatDelete<CR>')
-vim.keymap.set('n', '<leader>ar', ':GpChatRespond<CR>')
-vim.keymap.set('n', '<leader>ai', ':GpImage<CR>')
-vim.keymap.set('v', '<leader>ac', ':GpImplement<CR>')
-vim.keymap.set('n', '<leader>as', ':GpStop<CR>')
-vim.keymap.set('i', '<F8>', 'least words needed')
+-- vim.keymap.set('n', '<leader>at', ':GpChatToggle vsplit<CR>')
+-- vim.keymap.set('n', '<leader>an', ':GpChatNew vsplit<CR>')
+-- vim.keymap.set('n', '<leader>ad', ':GpChatDelete<CR>')
+-- vim.keymap.set('n', '<leader>ar', ':GpChatRespond<CR>')
+-- vim.keymap.set('n', '<leader>ai', ':GpImage<CR>')
+-- vim.keymap.set('v', '<leader>ac', ':GpImplement<CR>')
+-- vim.keymap.set('n', '<leader>as', ':GpStop<CR>')
+-- vim.keymap.set('i', '<F8>', 'least words needed')
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
   desc = "Toggle Spectre"
@@ -146,18 +146,6 @@ end)
 
 vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { desc = "Pin buffer to beginning of line" })
 vim.keymap.set('n', '<leader>bc', ':BufferLineCloseOthers<CR>', { desc = "Close all buffers but one" })
-
-local replacementStr = ":s/?: string;/: z.string().optional(),/ |" ..
-    " '[,']" ..
-    "s/?: string | null;/: z.string().nullable().optional(),/ |" ..
-    " '[,']" ..
-    "s/?: number;/: z.number().optional(),/ |" ..
-    " '[,']" ..
-    "s/?: number | null;/: z.number().nullable().optional(),/ |" ..
-    " '[,']" ..
-    "s/?: boolean;/: z.boolean().optional(),/" ..
-    "<CR>"
-vim.keymap.set('v', '<leader>xtz', replacementStr)
 
 -- Show all diagnostics on current line in floating window
 vim.api.nvim_set_keymap(
