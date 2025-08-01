@@ -3,10 +3,12 @@ local snacks = {
     "folke/snacks.nvim",
     lazy = false,
     opts = {
+      image = {
+        enabled = true
+      },
       indent = {},
       profiler = {},
       dashboard = {},
-      image = {},
       explorer = {},
       picker = {
         sources = {

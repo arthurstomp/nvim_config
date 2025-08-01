@@ -176,3 +176,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap('v', '<Leader>w', '"+y', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<Leader>W', '"+Y', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>W', '"+Y', {noremap = true, silent = true})
+
+vim.keymap.set('n', '<Leader>z', function()
+  require('lazy_plugins.wttr').wttr()
+end, { noremap = true, silent = true})
