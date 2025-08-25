@@ -77,20 +77,6 @@ map('t', '<Esc>', '<C-\\><C-n>')                                                
 map('n', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
 map('v', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>T', ':Telescope<CR>')
-vim.keymap.set('n', '<leader>td', function() builtin.diagnostics({ bufnr = 0 }) end, {})
-vim.keymap.set('n', '<leader>tf', function() builtin.find_files({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set('n', '<leader>tg', function() builtin.live_grep({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set('n', '<leader>tr', function() builtin.lsp_references({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set('n', '<leader>ti', function() builtin.lsp_definitions({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set('n', '<leader>tb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>tc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>tx', builtin.git_bcommits, {})
-vim.keymap.set('n', '<leader>ts', builtin.git_status, {})
--- vim.keymap.set('n', '<leader>th', ':Telescope harpoon marks<CR>')
-
-
 -- Harpoon maps
 local harpoon_mark = require('harpoon.mark')
 local harpoon_ui = require('harpoon.ui')
