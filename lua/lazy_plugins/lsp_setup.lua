@@ -45,12 +45,14 @@ local lsp = {
 
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls' },
+      ensure_installed = { 'lua_ls', 'eslint', 'prettier' },
       handlers = {
         -- this first function is the "default handler"
         -- it applies to every language server without a "custom handler"
         function(server_name)
           require('lspconfig')[server_name].setup({})
+          require('lspconfig')['eslint'].setup({})
+          require('lspconfig')['prettier'].setup({})
           require('lspconfig').lua_ls.setup({
             settings = {
               diagnostics = {
