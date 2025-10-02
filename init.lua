@@ -41,8 +41,8 @@ vim.opt.foldlevelstart = 99
 require('lazy_setup')
 require('maps')
 
+-- vim.cmd[[colorscheme wal]]
 vim.cmd[[colorscheme tokyonight-moon]]
--- vim.cmd[[colorscheme tokyonight-day]]
 vim.notify = require('notify')
 vim.filetype.add {
   pattern = {
@@ -50,3 +50,7 @@ vim.filetype.add {
     ['.*.?openapi.json'] = 'json.openapi',
   },
 }
+
+vim.g.calendar_google_calendar = 1
+vim.g.calendar_google_task = 1
+vim.cmd("luafile ~/.cache/calendar.vim/credentials.lua")

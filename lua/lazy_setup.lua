@@ -86,7 +86,9 @@ require("lazy").setup({
     { 'godlygeek/tabular' },
     { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end },
     { "ThePrimeagen/harpoon" },
-    { 'mbbill/undotree' },
+    {
+      'mbbill/undotree'
+    },
     {
       "AckslD/nvim-neoclip.lua",
       dependencies = {
@@ -100,7 +102,7 @@ require("lazy").setup({
       end,
     },
     { "rcarriga/nvim-notify" },
-    { 'wakatime/vim-wakatime',      lazy = false },
+    -- { 'wakatime/vim-wakatime',      lazy = false },
     { "gennaro-tedesco/nvim-peekup" },
     {
       "brenoprata10/nvim-highlight-colors",
@@ -126,6 +128,9 @@ require("lazy").setup({
           desc = "Buffer Local Keymaps (which-key)",
         },
       },
+    },
+    {
+      "itchyny/calendar.vim",
     }
   },
 })

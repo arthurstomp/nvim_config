@@ -1,0 +1,1 @@
+/home/stomp/.cache/wal/colors-wal.vim

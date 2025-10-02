@@ -16,7 +16,7 @@ local telescope_spec = {
         }
       }
     }
-    telescope.load_extension('fzf')
+    -- telescope.load_extension('fzf')
     telescope.load_extension('neoclip')
     -- telescope.load_extension('harpoon')
   end

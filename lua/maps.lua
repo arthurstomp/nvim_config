@@ -60,9 +60,11 @@ if vim.fn.has('macunix') == 1 then
   map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
 else
   print('non Darwin')
-  map('n', '<A-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
-  map('n', '<A-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
+  map('n', '<M-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
+  map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
 end
+map('n', '<M-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
+map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
 map('t', '<Esc>', '<C-\\><C-n>')                                                        -- exit
 
 -- NvimTree

@@ -69,7 +69,7 @@ local snippets = {
     )
   ),
   s('lint-disable', t('// eslint-disable-next-line')),
-  s('ts-disable', t('// @ts-ignore: Unreachable code error')),
+  s('ts-disable', t('// @ts-expect-error: Expected Error')),
   s('flexv', t('flex flex-col justify-center')),
   s('cla', t('className=""'))
 }
