@@ -37,7 +37,10 @@ map('n', '<S-l>', ':BufferLineCycleNext<CR>')
 map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
 
 -- Reload configuration without restart nvim
-map('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>')
+-- map('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
+  require('conform').format({ async = true, lsp_fallback = true })
+end, { desc = 'Format file' })
 
 map('n', '<leader>r', ':WinResizerStartResize <CR>')
 
@@ -177,3 +180,4 @@ vim.keymap.set('n', '<Leader>z', function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set('n', '*', '*``', { noremap = true, silent = true })
+vim.keymap.set('n', 'dc', ':DiffviewClose<CR>', { noremap = true , silent = true})

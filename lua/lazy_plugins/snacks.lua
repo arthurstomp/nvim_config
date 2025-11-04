@@ -3,6 +3,7 @@ local snacks = {
     "folke/snacks.nvim",
     lazy = false,
     opts = {
+      animate = {},
       image = {
         enabled = true
       },
@@ -142,9 +143,25 @@ local snacks = {
         "<leader>ti",
         function()
           local Snacks = require('snacks')
-          Snacks.picker.lsp_implementations()
+          Snacks.picker.lsp_definitions()
         end,
         desc = "Goto Implementation"
+      },
+      {
+        "<leader>gf",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.lsp_symbols()
+        end,
+       desc = "Show Symbols"
+      },
+      {
+        "<leader>gw",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+       desc = "Show Symbols"
       },
     }
     --   opts = function()
