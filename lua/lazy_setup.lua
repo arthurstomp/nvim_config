@@ -148,6 +148,7 @@ require("lazy").setup({
             python = { "isort", "black" },
             -- You can customize some of the format options for the filetype (:help conform.format)
             rust = { "rustfmt", lsp_format = "fallback" },
+            ruby = { "rubocop", args = { "--server", "--auto-correct", "--stderr", "--force-exclusion", "--stdin", "$FILENAME" } },
             -- Conform will run the first available formatter
             javascript = { "prettierd", "prettier", stop_after_first = true },
             javascriptreact = { "prettierd", "prettier", stop_after_first = true },
