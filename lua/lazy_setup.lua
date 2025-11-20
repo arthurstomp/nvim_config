@@ -164,6 +164,48 @@ require("lazy").setup({
       end,
       opts = {
       }
+    },
+    {
+      "3rd/diagram.nvim",
+      dependencies = {
+        {
+          "3rd/image.nvim",
+          opts = {
+            processor = "magick_cli"
+          },
+        }, -- you'd probably want to configure image.nvim manually instead of doing this
+      },
+      opts = {
+        events = {
+          render_buffer = {},
+          clear_buffer = { "BufLeave" }
+        },
+        renderer_options = {
+          mermaid = {
+            background = "transparent",
+            cli_args = { "-b", "transparent" }
+          }
+        }
+      },
+      config = function()
+        require("diagram").setup({
+          integrations = {
+            require("diagram.integrations.markdown"),
+            require("diagram.integrations.neorg"),
+          },
+        })
+      end,
+      keys = {
+        {
+          "M", -- or any key you prefer
+          function()
+            require("diagram").show_diagram_hover()
+          end,
+          mode = "n",
+          ft = { "markdown", "norg" }, -- Only in these filetypes
+          desc = "Show diagram in new tab",
+        },
+      },
     }
   },
 })
