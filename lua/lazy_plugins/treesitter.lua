@@ -14,7 +14,8 @@ local M = {
         'css',
         'lua',
         'markdown',
-        'ruby'
+        'ruby',
+        'diff'
       },
       highlight = {
         enable = true,
@@ -33,7 +34,8 @@ local M = {
           'css',
           'lua',
           'markdown',
-          'ruby'
+          'ruby',
+          'diff'
         },
       },
       indent = { enable = true },
