@@ -15,7 +15,9 @@ local M = {
         'lua',
         'markdown',
         'ruby',
-        'diff'
+        'diff',
+        'haskell',
+        'supercollider'
       },
       highlight = {
         enable = true,

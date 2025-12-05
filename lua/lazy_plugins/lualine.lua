@@ -3,7 +3,7 @@ local spec = {
   config = function()
     require('lualine').setup({
       options = {
-        theme = 'wal',
+        theme = 'auto',
       },
       inactive_sections = {
         lualine_c = { { 'filename', path = 1 } },

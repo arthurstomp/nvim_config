@@ -1,19 +1,3 @@
-local gp = {
-  "robitx/gp.nvim",
-  lazy = true,
-  config = function()
-    local conf = {
-      image = {
-        store_dir = vim.fn.expand('~/ai_images/'),
-        prompt_save = "💾:"
-      },
-    }
-    require("gp").setup(conf)
-
-    -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
-  end,
-}
-
 local claude = {
   "greggh/claude-code.nvim",
   dependencies = {
@@ -24,64 +8,88 @@ local claude = {
   end
 }
 
-local aider = {
-  "joshuavial/aider.nvim",
-  lazy = true,
+local avante = {
+  "yetone/avante.nvim",
+  build = vim.fn.has("win32") ~= 0
+      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
+  event = "VeryLazy",
+  version = false, -- Never set this value to "*"! Never!
   opts = {
-    -- your configuration comes here
-    -- if you don't want to use the default settings
-    auto_manage_context = true, -- automatically manage buffer context
-    default_bindings = true,    -- use default <leader>A keybindings
-    debug = false,              -- enable debug logging
-  },
-}
-
-local aider2 = {
-  "GeorgesAlkhouri/nvim-aider",
-  lazy = true,
-  cmd = {
-    "AiderTerminalToggle", "AiderHealth",
-  },
-  keys = {
-    { "<leader>a/", "<cmd>AiderTerminalToggle<cr>",    desc = "Open Aider" },
-    { "<leader>as", "<cmd>AiderTerminalSend<cr>",      desc = "Send to Aider",                  mode = { "n", "v" } },
-    { "<leader>ac", "<cmd>AiderQuickSendCommand<cr>",  desc = "Send Command To Aider" },
-    { "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>",   desc = "Send Buffer To Aider" },
-    { "<leader>a+", "<cmd>AiderQuickAddFile<cr>",      desc = "Add File to Aider" },
-    { "<leader>a-", "<cmd>AiderQuickDropFile<cr>",     desc = "Drop File from Aider" },
-    { "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", desc = "Add File as Read-Only" },
-    -- Example nvim-tree.lua integration if needed
-    { "<leader>a+", "<cmd>AiderTreeAddFile<cr>",       desc = "Add File from Tree to Aider",    ft = "NvimTree" },
-    { "<leader>a-", "<cmd>AiderTreeDropFile<cr>",      desc = "Drop File from Tree from Aider", ft = "NvimTree" },
+    -- add any opts here
+    -- this file can contain specific instructions for your project
+    instructions_file = "avante.md",
+    -- for example
+    provider = "openai",
+    providers = {
+      openai = {
+        model = "gpt-5",
+      }
+    }
+    -- providers = {
+    --   claude = {
+    --     endpoint = "https://api.anthropic.com",
+    --     model = "claude-sonnet-4-20250514",
+    --     timeout = 30000, -- Timeout in milliseconds
+    --     extra_request_body = {
+    --       temperature = 0.75,
+    --       max_tokens = 20480,
+    --     },
+    --   },
+    --   moonshot = {
+    --     endpoint = "https://api.moonshot.ai/v1",
+    --     model = "kimi-k2-0711-preview",
+    --     timeout = 30000, -- Timeout in milliseconds
+    --     extra_request_body = {
+    --       temperature = 0.75,
+    --       max_tokens = 32768,
+    --     },
+    --   },
+    -- },
   },
   dependencies = {
-    "folke/snacks.nvim",
-    --- The below dependencies are optional
-    "catppuccin/nvim",
-    "nvim-tree/nvim-tree.lua",
-    --- Neo-tree integration
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    --- The below dependencies are optional,
+    "nvim-mini/mini.pick",           -- for file_selector provider mini.pick
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+    "stevearc/dressing.nvim",        -- for input provider dressing
+    "folke/snacks.nvim",             -- for input provider snacks
+    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua",        -- for providers='copilot'
     {
-      "nvim-neo-tree/neo-tree.nvim",
-      opts = function(_, opts)
-        -- Example mapping configuration (already set by default)
-        -- opts.window = {
-        --   mappings = {
-        --     ["+"] = { "nvim_aider_add", desc = "add to aider" },
-        --     ["-"] = { "nvim_aider_drop", desc = "drop from aider" }
-        --   }
-        -- }
-        require("nvim_aider.neo_tree").setup(opts)
-      end,
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
+          },
+          -- required for Windows users
+          use_absolute_path = true,
+        },
+      },
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { "markdown", "Avante" },
+      },
+      ft = { "markdown", "Avante" },
     },
   },
-  config = true,
 }
 
 local M = {
-  gp = gp,
-  aider = aider,
-  aider2 = aider2,
-  claude = claude
+  claude = claude,
+  avante = avante
 }
 
 return M

@@ -35,7 +35,8 @@ require("lazy").setup({
     require('lazy_plugins/neorg'),
     require('lazy_plugins/autocomplete'),
     require('lazy_plugins/luasnip').luasnip,
-    require('lazy_plugins/ai').claude,
+    -- require('lazy_plugins/ai').claude,
+    require('lazy_plugins/ai').avante,
     -- require('lazy_plugins/ai').gp,
     -- require('lazy_plugins/ai').aider2,
     require('lazy_plugins/colors').tokyonight,
@@ -206,6 +207,34 @@ require("lazy").setup({
           desc = "Show diagram in new tab",
         },
       },
+    },
+    {
+      'grddavies/tidal.nvim',
+      opts = {},
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+          ensure_installed = { "haskell", "supercollider" },
+          boot = {
+            mappings = {
+              send_line = { mode = { "i", "n" }, key = "<S-CR>" },
+              send_visual = false,
+              -- send_block = { mode = { "i", "n", "x" }, key = "<S-CR>" },
+              send_node = { mode = "n", key = "<leader><CR>" },
+              send_silence = { mode = "n", key = "<leader>d" },
+              send_hush = { mode = "n", key = "<leader><Esc>" },
+
+            }
+          }
+        },
+      },
+    },
+    {
+      "gruvw/strudel.nvim",
+      build = "npm ci",
+      config = function()
+        require("strudel").setup()
+      end,
     }
   },
 })
