@@ -20,6 +20,41 @@ return {
       require('snippets/all')
       require('snippets/ruby')
       require('snippets/typescript')
-    end
+    end,
+    keys = {
+      {
+        "<c-k>",
+        function()
+          local ls = require('luasnip')
+          if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      },
+      {
+        "<c-j>",
+        function()
+          local ls = require('luasnip')
+          if ls.jumpable(-1) then
+            ls.jump(-1)
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      },
+      {
+        "<c-l>",
+        function()
+          local ls = require('luasnip')
+          if ls.choice_active() then
+            ls.change_choice(1)
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ local neogit = {
   "NeogitOrg/neogit",
   lazy = true,
   keys = {
-    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit"}
+    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit" }
   },
   dependencies = {
     "nvim-lua/plenary.nvim",         -- required
@@ -36,9 +36,12 @@ local fugitive = {
   ft = { "fugitive" }
 }
 
+local gitsigns_spec = { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
+
 local M = {
   neogit = neogit,
-  fugitive = fugitive
+  fugitive = fugitive,
+  gitsigns_spec = gitsigns_spec
 }
 
 return M

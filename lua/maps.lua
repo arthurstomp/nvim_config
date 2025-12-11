@@ -38,9 +38,6 @@ map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
 
 -- Reload configuration without restart nvim
 -- map('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
-  require('conform').format({ async = true, lsp_fallback = true })
-end, { desc = 'Format file' })
 
 map('n', '<leader>r', ':WinResizerStartResize <CR>')
 
@@ -56,43 +53,8 @@ map('n', '<leader>C', ':Bufonly<CR>')
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
 
--- Terminal mappings
-if vim.fn.has('macunix') == 1 then
-  print('Darwin')
-  map('n', '<M-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
-  map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
-else
-  print('non Darwin')
-  map('n', '<M-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
-  map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
-end
-map('n', '<M-1>', ':ToggleTerm size=80 direction=vertical<CR>', { noremap = true })   -- open
-map('n', '<M-2>', ':ToggleTerm size=10 direction=horizontal<CR>', { noremap = true }) -- open
-map('t', '<Esc>', '<C-\\><C-n>')                                                        -- exit
-
--- NvimTree
--- map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
--- map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
-
--- Tagbar
--- map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
-
--- Comment
-map('n', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
-map('v', '<leader>/', ':CommentToggle<CR>') -- Toggle comments
-
--- Harpoon maps
-local harpoon_mark = require('harpoon.mark')
-local harpoon_ui = require('harpoon.ui')
-
-vim.keymap.set('n', '<leader>ha', harpoon_mark.add_file)
-vim.keymap.set('n', '<leader>hh', harpoon_ui.toggle_quick_menu)
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
-vim.keymap.set('n', '<leader>l', ':LspRestart<CR>')
-vim.keymap.set('n', '<leader>k', function() require('notify').dismiss { pending = true, silent = true } end)
-
-vim.keymap.set('n', '<leader>d', ':NvimTreeFindFile<CR>')
+vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle line comment" })
+vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle selection comment" })
 
 vim.keymap.set('n', '<leader>nw', ':Telescope neorg switch_workspace<CR>')
 vim.keymap.set('n', '<leader>nh', ':Telescope neorg search_headings<CR>')
@@ -100,47 +62,6 @@ vim.keymap.set('n', '<leader>nf', ':Telescope neorg find_norg_files<CR>')
 vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>')
 vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>')
 vim.keymap.set('n', '<leader>ns', '<Plug>(neorg.qol.todo-items.todo.task-cycle)')
-
--- vim.keymap.set('n', '<leader>at', ':GpChatToggle vsplit<CR>')
--- vim.keymap.set('n', '<leader>an', ':GpChatNew vsplit<CR>')
--- vim.keymap.set('n', '<leader>ad', ':GpChatDelete<CR>')
--- vim.keymap.set('n', '<leader>ar', ':GpChatRespond<CR>')
--- vim.keymap.set('n', '<leader>ai', ':GpImage<CR>')
--- vim.keymap.set('v', '<leader>ac', ':GpImplement<CR>')
--- vim.keymap.set('n', '<leader>as', ':GpStop<CR>')
--- vim.keymap.set('i', '<F8>', 'least words needed')
-
-vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = "Toggle Spectre"
-})
-vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = "Search current word"
-})
-vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-  desc = "Search current word"
-})
-vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search()<CR>', {
-  desc = "Search on current file"
-})
-
-local ls = require('luasnip')
-vim.keymap.set({ "i", "s" }, "<c-k>", function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
-end, { silent = true })
-
-vim.keymap.set({ "i", "s" }, "<c-j>", function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
-  end
-end, { silent = true })
-
-vim.keymap.set({ "i", "s" }, "<c-l>", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
-end)
 
 vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { desc = "Pin buffer to beginning of line" })
 vim.keymap.set('n', '<leader>bc', ':BufferLineCloseOthers<CR>', { desc = "Close all buffers but one" })
@@ -179,5 +100,4 @@ vim.keymap.set('n', '<Leader>z', function()
   require('lazy_plugins.wttr').wttr()
 end, { noremap = true, silent = true })
 
-vim.keymap.set('n', '*', '*``', { noremap = true, silent = true })
-vim.keymap.set('n', 'dc', ':DiffviewClose<CR>', { noremap = true , silent = true})
+vim.keymap.set('n', 'dc', ':DiffviewClose<CR>', { noremap = true, silent = true })

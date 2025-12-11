@@ -7,6 +7,8 @@ local snacks = {
       image = {
         enabled = true
       },
+      bigfile = {},
+      bufdelete= {},
       indent = {},
       profiler = {},
       dashboard = {},

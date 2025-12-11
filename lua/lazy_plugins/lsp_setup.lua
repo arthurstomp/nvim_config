@@ -66,9 +66,16 @@ local lsp = {
         end,
       }
     })
-  end
+  end,
+  keys = {
+    {
+      '<leader>l',
+      ':LspRestart<CR>',
+      mode = 'n',
+      desc = 'Restart LSP.'
+    },
+  }
 }
-
 local mason = {
   'williamboman/mason.nvim',
   lazy = false,
