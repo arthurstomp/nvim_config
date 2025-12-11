@@ -27,6 +27,38 @@ local M = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-neorg/neorg-telescope" },
   },
+  keys = {
+    {
+      "<leader>nw",
+      ':Telescope neorg switch_workspace<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>nh",
+      ':Telescope neorg search_headings<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>nf",
+      ':Telescope neorg find_norg_files<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>ni",
+      ':Neorg index<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>nr",
+      ':Neorg return<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>ns",
+      '<Plug>(neorg.qol.todo-items.todo.task-cycle)',
+      mode = 'n',
+    },
+  }
 }
 
 return M

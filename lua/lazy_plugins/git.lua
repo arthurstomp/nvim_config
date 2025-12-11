@@ -2,7 +2,14 @@ local neogit = {
   "NeogitOrg/neogit",
   lazy = true,
   keys = {
-    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit" }
+    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit" },
+    {
+      'dc',
+      ':DiffviewClose<CR>',
+      mode = 'n',
+      silent = true,
+      noremap = true
+    }
   },
   dependencies = {
     "nvim-lua/plenary.nvim",         -- required
@@ -12,7 +19,7 @@ local neogit = {
   },
   config = function()
     require('neogit').setup()
-  end
+  end,
 }
 
 local fugitive = {

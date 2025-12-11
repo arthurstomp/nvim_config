@@ -74,6 +74,12 @@ local lsp = {
       mode = 'n',
       desc = 'Restart LSP.'
     },
+    {
+      '<leader>i',
+      ':lua vim.diagnostic.open_float()<CR>',
+      mode = 'n',
+      desc = 'Open diagnostics.'
+    },
   }
 }
 local mason = {
