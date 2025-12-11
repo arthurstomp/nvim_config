@@ -148,6 +148,10 @@ local which_key_spec = {
   },
 }
 
+local calendar_spec = {
+  "itchyny/calendar.vim",
+}
+
 local M = {
   harpoon_spec = harpoon_spec,
   toggle_term_spec = toggle_term_spec,
@@ -158,7 +162,8 @@ local M = {
   markdown_preview_spec = markdown_preview_spec,
   highlight_colors_spec = highlight_colors_spec,
   diagram_spec = diagram_spec,
-  which_key_spec = which_key_spec
+  which_key_spec = which_key_spec,
+  calendar_spec = calendar_spec
 }
 
 return M
