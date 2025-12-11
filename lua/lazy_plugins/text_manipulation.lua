@@ -112,6 +112,140 @@ local conform_spec = {
   }
 }
 
+local luasnip_spec = {
+  luasnip = {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip',
+      "rafamadriz/friendly-snippets"
+    },
+    config = function()
+      local ls = require('luasnip')
+      ls.setup({
+        history = true,
+        updateevents = "TextChanged,TextChangedI",
+        enable_autosnippets = true
+      })
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require('snippets/all')
+      require('snippets/ruby')
+      require('snippets/typescript')
+    end,
+    keys = {
+      {
+        "<c-k>",
+        function()
+          local ls = require('luasnip')
+          if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      },
+      {
+        "<c-j>",
+        function()
+          local ls = require('luasnip')
+          if ls.jumpable(-1) then
+            ls.jump(-1)
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      },
+      {
+        "<c-l>",
+        function()
+          local ls = require('luasnip')
+          if ls.choice_active() then
+            ls.change_choice(1)
+          end
+        end,
+        mode = { "i", "s" },
+        silent = true
+      }
+    }
+  }
+}
+
+local treesitter_spec = {
+  'nvim-treesitter/nvim-treesitter',
+  run = function()
+    -- local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+    -- ts_update()
+  end,
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      auto_install = true,
+      ensure_installed = {
+        'html',
+        'javascript',
+        'typescript',
+        'css',
+        'lua',
+        'markdown',
+        'ruby',
+        'diff',
+        'haskell',
+        'supercollider'
+      },
+      highlight = {
+        enable = true,
+        use_languagetree = true,
+      },
+      autotag = {
+        enable = true,
+        filetypes = {
+          'html',
+          'javascript',
+          'typescript',
+          'javascriptreact',
+          'typescriptreact',
+          'tsx',
+          'jsx',
+          'css',
+          'lua',
+          'markdown',
+          'ruby',
+          'diff'
+        },
+      },
+      indent = { enable = true },
+    })
+  end,
+}
+
+local autocomplete_spec = {
+  'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
+  config = function()
+    local cmp = require('cmp')
+
+    cmp.setup({
+      sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      }),
+      snippet = {
+        expand = function(args)
+          -- vim.snippet.expand(args.body)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
+    })
+  end
+}
+
 local M = {
   specter_spec = specter_spec,
   undotree_spec = undotree_spec,
@@ -119,7 +253,10 @@ local M = {
   surround_spec = surround_spec,
   tabular_spec = tabular_spec,
   peekup_spec = peekup_spec,
-  conform_spec = conform_spec
+  conform_spec = conform_spec,
+  luasnip_spec = luasnip_spec,
+  treesitter_spec = treesitter_spec,
+  autocomplete_spec = autocomplete_spec
 }
 
 return M
