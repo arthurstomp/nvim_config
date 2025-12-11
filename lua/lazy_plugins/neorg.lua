@@ -1,7 +1,7 @@
 local M = {
   "nvim-neorg/neorg",
-  lazy = false,      -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-  version = "*",     -- Pin Neorg to the latest stable release
+  lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+  version = "*", -- Pin Neorg to the latest stable release
   config = function()
     require('neorg').setup {
       load = {
@@ -14,7 +14,8 @@ local M = {
             workspaces = {
               journal = "~/journal",
               rayse = "~/work/rayse/journal",
-              houndsy = "~/work/houndsy/journal"
+              houndsy = "~/work/houndsy/journal",
+              monograph = "~/work/monograph/journal"
             },
             default_workspace = 'journal'
           }
