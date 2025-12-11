@@ -36,12 +36,9 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 
--- require("lazy_config")
--- require("lazy_plugins")
 require('lazy_setup')
 require('maps')
 
--- vim.cmd[[colorscheme wal]]
 vim.cmd [[colorscheme tokyonight-moon]]
 vim.notify = require('notify')
 vim.filetype.add {
@@ -53,4 +50,5 @@ vim.filetype.add {
 
 vim.g.calendar_google_calendar = 1
 vim.g.calendar_google_task = 1
+
 vim.cmd("luafile ~/.cache/calendar.vim/credentials.lua")
