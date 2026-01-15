@@ -29,7 +29,7 @@ require("lazy").setup({
     require('lazy_plugins/git').neogit,
     require('lazy_plugins/git').fugitive,
     require('lazy_plugins/git').gitsigns_spec,
-    require('lazy_plugins/neorg'),
+    require('lazy_plugins/text_manipulation').treesitter_spec,
     require('lazy_plugins/ai').avante,
     require('lazy_plugins/colors').tokyonight,
     require('lazy_plugins/colors').ayu,
@@ -42,7 +42,6 @@ require("lazy").setup({
     require('lazy_plugins/text_manipulation').peekup_spec,
     require('lazy_plugins/text_manipulation').conform_spec,
     require('lazy_plugins/text_manipulation').luasnip_spec,
-    require('lazy_plugins/text_manipulation').treesitter_spec,
     require('lazy_plugins/text_manipulation').autocomplete_spec,
     require('lazy_plugins/ui').harpoon_spec,
     require('lazy_plugins/ui').toggle_term_spec,
@@ -58,5 +57,6 @@ require("lazy").setup({
     require('lazy_plugins/ui').calendar_spec,
     require('lazy_plugins/fun').strudel_spec,
     require('lazy_plugins/fun').tidal_spec,
+    require('lazy_plugins/neorg'),
   },
 })

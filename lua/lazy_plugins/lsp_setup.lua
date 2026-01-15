@@ -44,16 +44,21 @@ local lsp = {
     })
 
     require('mason').setup({
-      ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'prettier' },
+      ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'prettier', 'standardrb', 'erb-formatter' },
     })
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls', 'eslint', 'ts_ls' },
+      ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'standardrb', 'ruby_lsp' },
       handlers = {
         -- this first function is the "default handler"
         -- it applies to every language server without a "custom handler"
         function(server_name)
           require('lspconfig')[server_name].setup({})
           require('lspconfig')['eslint'].setup({})
+          require('lspconfig')['tailwindcss'].setup({})
+          require('lspconfig')['erb-formatter'].setup({})
+          require('lspconfig')['standardrb'].setup({enabled = false})
+          -- require('lspconfig')['solargraph'].setup({ enabled = false})
+          require('lspconfig')['ruby_lsp'].setup({})
           require('lspconfig').lua_ls.setup({
             settings = {
               diagnostics = {

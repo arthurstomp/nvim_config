@@ -37,7 +37,14 @@ local snacks = {
         "<leader>tF",
         function()
           local Snacks = require('snacks')
-          Snacks.picker.smart()
+          Snacks.picker.smart({
+            matcher = {
+              fuzzy = true,
+              smartcase = true,
+              ignorecase = true,
+              history_bonus = true
+            }
+          })
         end,
         desc = "Smart Find Files"
       },
@@ -45,7 +52,14 @@ local snacks = {
         "<leader>tb",
         function()
           local Snacks = require('snacks')
-          Snacks.picker.buffers()
+          Snacks.picker.buffers({
+            matcher = {
+              fuzzy = true,
+              smartcase = true,
+              ignorecase = true,
+              history_bonus = true
+            }
+          })
         end,
         desc = "Buffers"
       },
@@ -53,7 +67,14 @@ local snacks = {
         "<leader>tg",
         function()
           local Snacks = require('snacks')
-          Snacks.picker.grep()
+          Snacks.picker.grep({
+            matcher = {
+              fuzzy = true,
+              smartcase = true,
+              ignorecase = true,
+              history_bonus = true
+            }
+          })
         end,
         desc = "Grep"
       },

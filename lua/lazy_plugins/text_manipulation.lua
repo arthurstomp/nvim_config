@@ -77,6 +77,17 @@ local conform_spec = {
         require("conform").format({ bufnr = args.buf })
       end,
     })
+    vim.opt.signcolumn = "yes"
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "ruby",
+      group = vim.api.nvim_create_augroup("RubyLSP", { clear = true }), -- also this is not /needed/ but it's good practice
+      callback = function()
+        vim.lsp.start {
+          name = "standardrb",
+          cmd = { "~/.asdf/shims/standardrb", "--lsp" },
+        }
+      end,
+    })
     require("conform").setup({
       formatters_by_ft = {
         lua = { "stylua", "lua_ls", stop_after_first = true },
@@ -84,7 +95,14 @@ local conform_spec = {
         python = { "isort", "black" },
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
-        ruby = { "rubocop", args = { "--server", "--auto-correct", "--stderr", "--force-exclusion", "--stdin", "$FILENAME" } },
+        ruby = {
+          "standardrb",
+          lsp_format = "fallback",
+          timeout_ms = 2000,
+          async = true,
+          args = { "$FILENAME" }
+        },
+        -- ruby = { "rubocop", args = { "--server", "--auto-correct", "--stderr", "--force-exclusion", "--stdin", "$FILENAME" } },
         -- Conform will run the first available formatter
         javascript = { "prettierd", "prettier", stop_after_first = true },
         javascriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -93,7 +111,7 @@ local conform_spec = {
       },
       format_on_save = {
         -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 2000,
         lsp_format = "fallback",
       },
     })
@@ -173,6 +191,7 @@ local luasnip_spec = {
 
 local treesitter_spec = {
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   run = function()
     -- local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
     -- ts_update()

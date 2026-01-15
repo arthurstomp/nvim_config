@@ -45,6 +45,10 @@ vim.filetype.add {
   pattern = {
     ['openapi.ya?ml'] = 'yaml.openapi',
     ['.*.?openapi.json'] = 'json.openapi',
+    ['.env.development'] = 'sh',
+    ['.env.development.local'] = 'sh',
+    ['.env.test'] = 'sh',
+    ['.env.production'] = 'sh',
   },
 }
 
