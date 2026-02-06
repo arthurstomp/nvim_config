@@ -8,14 +8,15 @@ local snacks = {
         enabled = true
       },
       bigfile = {},
-      bufdelete= {},
+      bufdelete = {},
       indent = {},
       profiler = {},
       dashboard = {},
-      explorer = {
-        exclude = { "generated"}
-      },
+      explorer = {},
       picker = {
+        exclude = {
+          "generated" -- ignore for works in monograph
+        },
         sources = {
           explorer = {
             -- your explorer picker configuration comes here

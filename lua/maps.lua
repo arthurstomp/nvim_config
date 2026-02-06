@@ -59,9 +59,9 @@ ToggleTerm = function(direction)
   require('toggleterm')
   local command = "ToggleTerm"
   if direction == "horizontal" then
-    command = command .. " direction=horizontal"
+    command = command .. " direction=horizontal size=60"
   elseif direction == "vertical" then
-    command = command .. " direction=vertical"
+    command = command .. " direction=vertical size=60"
   end
   if vim.bo.filetype == "toggleterm" then
     require("bufresize").block_register()
