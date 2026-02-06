@@ -12,7 +12,9 @@ local snacks = {
       indent = {},
       profiler = {},
       dashboard = {},
-      explorer = {},
+      explorer = {
+        exclude = { "generated"}
+      },
       picker = {
         sources = {
           explorer = {

@@ -45,10 +45,13 @@ local fugitive = {
 
 local gitsigns_spec = { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 
+local diffview_spec = { "sindrets/diffview.nvim" }
+
 local M = {
   neogit = neogit,
   fugitive = fugitive,
-  gitsigns_spec = gitsigns_spec
+  gitsigns_spec = gitsigns_spec,
+  diffview_spec = diffview_spec
 }
 
 return M

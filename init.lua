@@ -49,6 +49,7 @@ vim.filetype.add {
     ['.env.development.local'] = 'sh',
     ['.env.test'] = 'sh',
     ['.env.production'] = 'sh',
+    ['*.norg'] = 'neorg',
   },
 }
 

@@ -24,18 +24,18 @@ local toggle_term_spec = {
     require("toggleterm").setup()
   end,
   keys = {
-    {
-      '<M-1>',
-      ':ToggleTerm size=80 direction=vertical<CR>',
-      mode = 'n',
-      noremap = true
-    },
-    {
-      '<M-2>',
-      ':ToggleTerm size=80 direction=horizontal<CR>',
-      mode = 'n',
-      noremap = true
-    },
+    -- {
+    --   '<M-1>',
+    --   ':ToggleTerm direction=vertical<CR>',
+    --   mode = 'n',
+    --   noremap = true
+    -- },
+    -- {
+    --   '<M-2>',
+    --   ':ToggleTerm direction=horizontal<CR>',
+    --   mode = 'n',
+    --   noremap = true
+    -- },
     {
       '<ESC>',
       '<C-\\><C-n>',
@@ -58,15 +58,69 @@ local notify_spec = {
 }
 
 local winresizer_spec = { 'simeji/winresizer' }
+local bufresize_spec = {
+  "kwkarlwang/bufresize.nvim",
+  config = function()
+    require("bufresize").setup()
+  end,
+  keys = {
+    {
+      '<M-h>',
+      '<C-w><',
+      mode = 'n',
+      desc = 'Increase buffer left'
+    },
+    {
+      '<M-l>',
+      '<C-w>>',
+      mode = 'n',
+      desc = 'Increase buffer right'
+    },
+    {
+      '<M-k>',
+      '<C-w>+',
+      mode = 'n',
+      desc = 'Increase buffer height'
+    },
+    {
+      '<M-j>',
+      '<C-w>-',
+      mode = 'n',
+      desc = 'Decrease buffer right'
+    },
+    {
+      '<M-=>',
+      '<C-w>=',
+      mode = 'n',
+      desc = 'Decrease buffer right'
+    },
+    {
+      '<M-|>',
+      '<C-w>|',
+      mode = 'n',
+      desc = 'Decrease buffer right'
+    },
+  }
+}
 
 local plenary_spec = { 'nvim-lua/plenary.nvim' }
 
 local bufferline_spec = {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
+  version = "*",
+  lazy = false,
   config = function()
-    require("bufferline").setup()
-  end
+    require("bufferline").setup({})
+  end,
+  keys = {
+    {
+      "<leader>br",
+      "<cmd>BufferLineCloseRight</CR>",
+      mode = 'n',
+      desc = 'Close buffers to the right'
+    },
+  }
 }
 
 local markdown_preview_spec = {
@@ -219,7 +273,8 @@ local M = {
   which_key_spec = which_key_spec,
   calendar_spec = calendar_spec,
   lualine_spec = lualine_spec,
-  telescope_spec = telescope_spec
+  telescope_spec = telescope_spec,
+  bufresize_spec = bufresize_spec
 }
 
 return M

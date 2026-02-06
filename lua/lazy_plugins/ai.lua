@@ -4,8 +4,25 @@ local claude = {
     "nvim-lua/plenary.nvim", -- Required for git operations
   },
   config = function()
-    require("claude-code").setup()
-  end
+    require("claude-code").setup({
+      window = {
+        aspect_ratio = 0.4,
+        position = 'vertical'
+      }
+    })
+  end,
+  keys = {
+    {
+      "<leader>ac",
+      '<cmd>ClaudeCode<CR>',
+      mode = 'n',
+    },
+    {
+      "<leader>ar",
+      '<cmd>ClaudeCodeResume<CR>',
+      mode = 'n',
+    },
+  }
 }
 
 local avante = {
@@ -18,13 +35,23 @@ local avante = {
   opts = {
     -- add any opts here
     -- this file can contain specific instructions for your project
-    instructions_file = "avante.md",
+    instructions_file = "CLAUDE.md",
     -- for example
-    provider = "openai",
+    provider = "claude",
     providers = {
       openai = {
         model = "gpt-5",
-      }
+      },
+      claude = {
+        auth_type = "max",
+        endpoint = "https://api.anthropic.com",
+        model = "claude-sonnet-4-5-20250929",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
+      },
     }
     -- providers = {
     --   claude = {

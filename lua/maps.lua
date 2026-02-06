@@ -43,6 +43,9 @@ vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle selection 
 
 vim.keymap.set('n', '<leader>bp', ':BufferLineTogglePin<CR>', { desc = "Pin buffer to beginning of line" })
 vim.keymap.set('n', '<leader>bc', ':BufferLineCloseOthers<CR>', { desc = "Close all buffers but one" })
+vim.keymap.set('n', '<leader>br', ':BufferLineCloseRight<CR>', { desc = "Close buffers to the right" })
+vim.keymap.set('n', '<leader>e', ":let @+ = expand('%:.')<CR>",
+  { desc = "Copy current buffer relative filepath to clipboard" })
 
 vim.api.nvim_set_keymap('v', '<Leader>w', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<Leader>W', '"+Y', { noremap = true, silent = true })
@@ -51,3 +54,27 @@ vim.api.nvim_set_keymap('n', '<Leader>W', '"+Y', { noremap = true, silent = true
 vim.keymap.set('n', '<Leader>z', function()
   require('lazy_plugins.wttr').wttr()
 end, { noremap = true, silent = true })
+
+ToggleTerm = function(direction)
+  require('toggleterm')
+  local command = "ToggleTerm"
+  if direction == "horizontal" then
+    command = command .. " direction=horizontal"
+  elseif direction == "vertical" then
+    command = command .. " direction=vertical"
+  end
+  if vim.bo.filetype == "toggleterm" then
+    require("bufresize").block_register()
+    vim.api.nvim_command(command)
+    require("bufresize").resize_close()
+  else
+    require("bufresize").block_register()
+    vim.api.nvim_command(command)
+    require("bufresize").resize_open()
+    vim.cmd([[execute "normal! i"]])
+  end
+end
+local toggle_term_horizontal = function() ToggleTerm("horizontal") end
+local toggle_term_vertical = function() ToggleTerm("vertical") end
+vim.keymap.set("n", "<M-1>", toggle_term_vertical, { noremap = true, silent = true })
+vim.keymap.set("n", "<M-2>", toggle_term_horizontal, { noremap = true, silent = true })

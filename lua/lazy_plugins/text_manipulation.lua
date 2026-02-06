@@ -191,13 +191,14 @@ local luasnip_spec = {
 
 local treesitter_spec = {
   'nvim-treesitter/nvim-treesitter',
+  tag = "v0.10.0",
   lazy = false,
   run = function()
     -- local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
     -- ts_update()
   end,
   config = function()
-    require('nvim-treesitter.configs').setup({
+    require('nvim-treesitter').setup({
       auto_install = true,
       ensure_installed = {
         'html',
