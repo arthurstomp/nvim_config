@@ -66,37 +66,37 @@ local bufresize_spec = {
   keys = {
     {
       '<M-h>',
-      '<C-w><',
+      '30<C-w><',
       mode = 'n',
       desc = 'Increase buffer left'
     },
     {
       '<M-l>',
-      '<C-w>>',
+      '30<C-w>>',
       mode = 'n',
       desc = 'Increase buffer right'
     },
     {
       '<M-k>',
-      '<C-w>+',
+      '10<C-w>+',
       mode = 'n',
       desc = 'Increase buffer height'
     },
     {
       '<M-j>',
-      '<C-w>-',
+      '10<C-w>-',
       mode = 'n',
       desc = 'Decrease buffer right'
     },
     {
       '<M-=>',
-      '<C-w>=',
+      '30<C-w>=',
       mode = 'n',
       desc = 'Decrease buffer right'
     },
     {
       '<M-|>',
-      '<C-w>|',
+      '30<C-w>|',
       mode = 'n',
       desc = 'Decrease buffer right'
     },
@@ -260,6 +260,11 @@ local telescope_spec = {
 --   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
 -- }
 
+local newscroll_spec = {
+  "karb94/neoscroll.nvim",
+  opts = {},
+}
+
 local M = {
   harpoon_spec = harpoon_spec,
   toggle_term_spec = toggle_term_spec,
@@ -274,7 +279,8 @@ local M = {
   calendar_spec = calendar_spec,
   lualine_spec = lualine_spec,
   telescope_spec = telescope_spec,
-  bufresize_spec = bufresize_spec
+  bufresize_spec = bufresize_spec,
+  newscroll_spec = newscroll_spec
 }
 
 return M
