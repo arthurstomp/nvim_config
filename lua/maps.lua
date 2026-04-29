@@ -78,3 +78,7 @@ local toggle_term_horizontal = function() ToggleTerm("horizontal") end
 local toggle_term_vertical = function() ToggleTerm("vertical") end
 vim.keymap.set("n", "<M-1>", toggle_term_vertical, { noremap = true, silent = true })
 vim.keymap.set("n", "<M-2>", toggle_term_horizontal, { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "x" }, "<leader>ca", function()
+  require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })

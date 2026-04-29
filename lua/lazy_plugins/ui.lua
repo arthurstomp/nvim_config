@@ -65,25 +65,25 @@ local bufresize_spec = {
   end,
   keys = {
     {
-      '<M-h>',
+      '<M-S-h>',
       '30<C-w><',
       mode = 'n',
       desc = 'Increase buffer left'
     },
     {
-      '<M-l>',
+      '<M-S-l>',
       '30<C-w>>',
       mode = 'n',
       desc = 'Increase buffer right'
     },
     {
-      '<M-k>',
+      '<M-S-k>',
       '10<C-w>+',
       mode = 'n',
       desc = 'Increase buffer height'
     },
     {
-      '<M-j>',
+      '<M-S-j>',
       '10<C-w>-',
       mode = 'n',
       desc = 'Decrease buffer right'

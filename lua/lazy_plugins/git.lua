@@ -43,7 +43,45 @@ local fugitive = {
   ft = { "fugitive" }
 }
 
-local gitsigns_spec = { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
+local gitsigns_spec = {
+  'lewis6991/gitsigns.nvim',
+  config = function() require('gitsigns').setup() end,
+  lazy = false,
+  keys = {
+    {
+      "]c",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.nav_hunk("next")
+      end,
+      desc = "Next git hunk"
+    },
+    {
+      "[c",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.nav_hunk("prev")
+      end,
+      desc = "Previous git hunk"
+    },
+    -- {
+    --   "<leader>hd",
+    --   function()
+    --     local gitsigns = require('gitsigns')
+    --     gitsigns.diffthis()
+    --   end,
+    --   desc = "Diff this"
+    -- },
+    -- {
+    --   "<leader>hb",
+    --   function()
+    --     local gitsigns = require('gitsigns')
+    --     gitsigns.toggle_current_line_blame()
+    --   end,
+    --   desc = "Toggle current line blame"
+    -- },
+  }
+}
 
 local diffview_spec = { "sindrets/diffview.nvim" }
 

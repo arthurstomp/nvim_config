@@ -129,9 +129,31 @@ local mason = {
   end
 }
 
+local tiny_code_actions = {
+  "rachartier/tiny-code-action.nvim",
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+
+    -- optional picker via telescope
+    { "nvim-telescope/telescope.nvim" },
+    -- optional picker via fzf-lua
+    { "ibhagwan/fzf-lua" },
+    -- .. or via snacks
+    {
+      "folke/snacks.nvim",
+      opts = {
+        terminal = {},
+      }
+    }
+  },
+  event = "LspAttach",
+  opts = {},
+}
+
 local M = {
   lsp = lsp,
-  mason = mason
+  mason = mason,
+  tiny_code_actions = tiny_code_actions
 }
 
 return M
