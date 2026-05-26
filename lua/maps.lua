@@ -32,6 +32,8 @@ map('n', '<C-l>', '<C-w>l')
 
 map('n', '<S-l>', ':BufferLineCycleNext<CR>')
 map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
+map('n', '<M-l>', ':tabnext<CR>')
+map('n', '<M-h>', ':tabprev<CR>')
 map('n', '<leader>c', ':bd<CR>')
 map('n', '<leader>C', ':Bufonly<CR>')
 

@@ -105,6 +105,8 @@ local bufresize_spec = {
 
 local plenary_spec = { 'nvim-lua/plenary.nvim' }
 
+local scope = { "tiagovla/scope.nvim", config = true }
+
 local bufferline_spec = {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
@@ -280,7 +282,8 @@ local M = {
   lualine_spec = lualine_spec,
   telescope_spec = telescope_spec,
   bufresize_spec = bufresize_spec,
-  newscroll_spec = newscroll_spec
+  newscroll_spec = newscroll_spec,
+  scope = scope
 }
 
 return M

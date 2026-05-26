@@ -9,7 +9,7 @@ local snacks = {
         enabled = false
       },
       dim = {},
-      scope = { enabled = true },
+      scope = { enabled = false },
       bigfile = {},
       bufdelete = {},
       indent = {},
@@ -17,17 +17,27 @@ local snacks = {
       dashboard = {},
       explorer = {},
       picker = {
-        exclude = {
-          "generated" -- ignore for works in monograph
-        },
+        enabled = true,
         sources = {
           explorer = {
-            -- your explorer picker configuration comes here
-            -- or leave it empty to use the default settings
+            enabled = true,
+            hidden = true,
+            auto_close = false,
+            win = {
+              list = {
+                keys = {
+                  ["O"] = { { "pick_win", "jump"}, mode = {"n", "i"}}
+                }
+              }
+            }
           }
         },
         jump = {
           reuse_win = true
+        },
+        layout = {
+          preset="ivy",
+          position = "bottom"
         }
       },
       ui = {},
@@ -56,6 +66,14 @@ local snacks = {
           })
         end,
         desc = "Smart Find Files"
+      },
+      {
+        "<leader>tR",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.registers()
+        end,
+        desc = "Vim registers"
       },
       {
         "<leader>tb",
