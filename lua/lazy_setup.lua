@@ -63,6 +63,7 @@ require("lazy").setup({
     require('lazy_plugins/ui').lualine_spec,
     -- require('lazy_plugins/ui').calendar_spec,
     require('lazy_plugins/ui').scope,
+    require('lazy_plugins/network').remote_sshfs,
     -- require('lazy_plugins/fun').strudel_spec,
     -- require('lazy_plugins/fun').tidal_spec,
   },
