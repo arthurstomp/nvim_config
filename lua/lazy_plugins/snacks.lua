@@ -46,6 +46,11 @@ local snacks = {
       scroll = {},
       toggle = {},
       highlights = {},
+      terminal = {
+        win = {
+          style = "terminal",
+        }
+      }
     },
     keys = {
       { "<C-n>", function()

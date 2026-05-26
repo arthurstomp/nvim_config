@@ -36,12 +36,12 @@ local toggle_term_spec = {
     --   mode = 'n',
     --   noremap = true
     -- },
-    {
-      '<ESC>',
-      '<C-\\><C-n>',
-      mode = 't',
-      desc = 'Exit terminal mode.'
-    },
+    -- {
+    --   '<ESC>',
+    --   '<C-\\><C-n>',
+    --   mode = 't',
+    --   desc = 'Exit terminal mode.'
+    -- },
   }
 }
 
@@ -137,7 +137,11 @@ local markdown_preview_spec = {
 local highlight_colors_spec = {
   "brenoprata10/nvim-highlight-colors",
   config = function()
-    require('nvim-highlight-colors').setup({})
+    require('nvim-highlight-colors').setup({
+      render = 'virtual',
+      virtual_symbol = "",
+      enable_tailwind = true,
+    })
   end
 }
 

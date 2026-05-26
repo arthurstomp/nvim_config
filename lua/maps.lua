@@ -58,20 +58,30 @@ vim.keymap.set('n', '<Leader>z', function()
 end, { noremap = true, silent = true })
 
 ToggleTerm = function(direction)
-  require('toggleterm')
-  local command = "ToggleTerm"
+  local terminal = require('snacks').terminal
+  local opts = {}
   if direction == "horizontal" then
-    command = command .. " direction=horizontal size=140"
+    opts = {
+      win = {
+        position = "right",
+        min_width = 70
+      }
+    }
   elseif direction == "vertical" then
-    command = command .. " direction=vertical size=140"
+    opts = {
+      win = {
+        position = "bottom",
+        min_height = 30
+      }
+    }
   end
-  if vim.bo.filetype == "toggleterm" then
+  if vim.bo.filetype == "snacks_terminal" then
     require("bufresize").block_register()
-    vim.api.nvim_command(command)
+    terminal.toggle(nil, opts)
     require("bufresize").resize_close()
   else
     require("bufresize").block_register()
-    vim.api.nvim_command(command)
+    terminal.toggle(nil, opts)
     require("bufresize").resize_open()
     vim.cmd([[execute "normal! i"]])
   end
