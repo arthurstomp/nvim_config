@@ -63,28 +63,17 @@ ToggleTerm = function(direction)
   if direction == "horizontal" then
     opts = {
       win = {
-        position = "right",
-        min_width = 70
+        position = "bottom",
       }
     }
   elseif direction == "vertical" then
     opts = {
       win = {
-        position = "bottom",
-        min_height = 30
+        position = "right",
       }
     }
   end
-  if vim.bo.filetype == "snacks_terminal" then
-    require("bufresize").block_register()
-    terminal.toggle(nil, opts)
-    require("bufresize").resize_close()
-  else
-    require("bufresize").block_register()
-    terminal.toggle(nil, opts)
-    require("bufresize").resize_open()
-    vim.cmd([[execute "normal! i"]])
-  end
+  terminal.toggle(nil, opts)
 end
 local toggle_term_horizontal = function() ToggleTerm("horizontal") end
 local toggle_term_vertical = function() ToggleTerm("vertical") end
