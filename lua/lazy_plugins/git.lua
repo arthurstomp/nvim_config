@@ -85,22 +85,22 @@ local gitsigns_spec = {
       end,
       desc = "Previous git hunk"
     },
-    -- {
-    --   "<leader>hd",
-    --   function()
-    --     local gitsigns = require('gitsigns')
-    --     gitsigns.diffthis()
-    --   end,
-    --   desc = "Diff this"
-    -- },
-    -- {
-    --   "<leader>hb",
-    --   function()
-    --     local gitsigns = require('gitsigns')
-    --     gitsigns.toggle_current_line_blame()
-    --   end,
-    --   desc = "Toggle current line blame"
-    -- },
+    {
+      "<leader>hd",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.diffthis()
+      end,
+      desc = "Diff this"
+    },
+    {
+      "<leader>hb",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.toggle_current_line_blame()
+      end,
+      desc = "Toggle current line blame"
+    },
   }
 }
 

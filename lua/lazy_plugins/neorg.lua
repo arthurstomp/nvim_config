@@ -1,6 +1,6 @@
 local M = {
   "nvim-neorg/neorg",
-  lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+  lazy = true,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
   version = "9.4.0", -- Pin Neorg to the latest stable release
   config = function()
     require('neorg').setup {

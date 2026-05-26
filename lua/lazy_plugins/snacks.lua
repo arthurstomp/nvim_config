@@ -110,20 +110,20 @@ local snacks = {
         end,
         desc = "Grep"
       },
-      {
-        "<leader>d",
-        function()
-          local Snacks = require('snacks')
-          if snacks_dim_active then
-            Snacks.dim.disable()
-            snacks_dim_active = false
-          else
-            Snacks.dim.enable()
-            snacks_dim_active = true
-          end
-        end,
-        desc = "Dim"
-      },
+      -- {
+      --   "<leader>d",
+      --   function()
+      --     local Snacks = require('snacks')
+      --     if snacks_dim_active then
+      --       Snacks.dim.disable()
+      --       snacks_dim_active = false
+      --     else
+      --       Snacks.dim.enable()
+      --       snacks_dim_active = true
+      --     end
+      --   end,
+      --   desc = "Dim"
+      -- },
       -- {
       --   "<leader>:",
       --   function()
