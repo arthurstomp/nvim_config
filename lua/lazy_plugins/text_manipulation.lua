@@ -108,6 +108,7 @@ local conform_spec = {
         javascriptreact = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
       },
       format_on_save = {
         -- These options will be passed to conform.format()
@@ -191,7 +192,8 @@ local luasnip_spec = {
 
 local treesitter_spec = {
   'nvim-treesitter/nvim-treesitter',
-  tag = "v0.10.0",
+  branch = "main",
+  build = ":TSUpdate",
   lazy = false,
   run = function()
     -- local ts_update = require('nvim-treesitter.install').update({ with_sync = true })

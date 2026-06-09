@@ -33,6 +33,8 @@ require("lazy").setup({
     require('lazy_plugins/git').gitsigns_spec,
     require('lazy_plugins/git').diffview_spec,
     require('lazy_plugins/neorg'),
+    require('lazy_plugins/orgmode').orgmode,
+    require('lazy_plugins/orgmode').orgroam,
     require('lazy_plugins/text_manipulation').treesitter_spec,
     -- require('lazy_plugins/ai').avante,
     -- require('lazy_plugins/ai').claude,
