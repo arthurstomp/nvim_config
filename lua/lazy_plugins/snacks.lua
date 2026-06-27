@@ -212,7 +212,7 @@ local snacks = {
       -- Grep
       -- { "<leader>sb", function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
       {
-        "<leader>gf",
+        "<leader>cf",
         function()
           local Snacks = require('snacks')
           Snacks.picker.lsp_symbols()
