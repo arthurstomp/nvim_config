@@ -20,18 +20,6 @@ local harpoon_spec = {
   }
 }
 
-local notify_spec = {
-  "rcarriga/nvim-notify",
-  keys = {
-    {
-      '<leader>k',
-      function() require('notify').dismiss { pending = true, silent = true } end,
-      mode = 'n',
-      desc = 'Clear notifications.'
-    },
-  }
-}
-
 local winresizer_spec = { 'simeji/winresizer' }
 local bufresize_spec = {
   "kwkarlwang/bufresize.nvim",
@@ -61,19 +49,7 @@ local bufresize_spec = {
       '<M-S-j>',
       '10<C-w>-',
       mode = 'n',
-      desc = 'Decrease buffer right'
-    },
-    {
-      '<M-=>',
-      '30<C-w>=',
-      mode = 'n',
-      desc = 'Decrease buffer right'
-    },
-    {
-      '<M-|>',
-      '30<C-w>|',
-      mode = 'n',
-      desc = 'Decrease buffer right'
+      desc = 'Decrease buffer height'
     },
   }
 }
@@ -187,26 +163,14 @@ local which_key_spec = {
       { "<leader>t", group = "Snack Explorer" },
       { "<leader>b", group = "Buffer Utils" },
       { "<leader>h", group = "Harpoon" },
-      { "<leader>c", group = "Code" }
+      { "<leader>c", group = "Code" },
+      { "<leader>k", group = "Notification Utils" },
+      { "<leader>n", group = "Neorg" }
     },
     triggers = {
       { "<leader>", mode = { "n", "v" } },
       { "<auto>", mode = "nixsotc" },
     }
-  },
-  -- config = function(_, opts)
-  --   local wk = require("which-key")
-  --   wk.setup(opts)
-  --   wk.register(opts.defaults)
-  -- end,
-  keys = {
-    -- {
-    --   "<leader>?",
-    --   function()
-    --     require("which-key").show({ global = true })
-    --   end,
-    --   desc = "Buffer Local Keymaps (which-key)",
-    -- },
   },
 }
 
@@ -269,7 +233,6 @@ local newscroll_spec = {
 
 local M = {
   harpoon_spec = harpoon_spec,
-  notify_spec = notify_spec,
   winresizer_spec = winresizer_spec,
   plenary_spec = plenary_spec,
   bufferline_spec = bufferline_spec,

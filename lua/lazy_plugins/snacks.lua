@@ -50,6 +50,10 @@ local snacks = {
         win = {
           style = "terminal",
         }
+      },
+      notifier = {
+        enabled = true,
+        style = "compact"
       }
     },
     keys = {
@@ -113,11 +117,18 @@ local snacks = {
         desc = "Grep"
       },
       {
-        "<leader>n",
+        "<leader>kh",
         function()
-          Snacks.picker.notifications()
+          Snacks.notifier.show_history()
         end,
         desc = "Notification History"
+      },
+      {
+        "<leader>kc",
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = "Hide Notifications"
       },
       {
         "<leader>tc",
