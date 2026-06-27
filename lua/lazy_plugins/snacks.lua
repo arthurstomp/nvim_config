@@ -56,7 +56,9 @@ local snacks = {
       { "<C-n>", function()
         local Snacks = require('snacks')
         Snacks.explorer()
-      end },
+      end,
+      desc = "Open Snack Explorer"
+    },
       {
         "<leader>tF",
         function()
@@ -110,34 +112,13 @@ local snacks = {
         end,
         desc = "Grep"
       },
-      -- {
-      --   "<leader>d",
-      --   function()
-      --     local Snacks = require('snacks')
-      --     if snacks_dim_active then
-      --       Snacks.dim.disable()
-      --       snacks_dim_active = false
-      --     else
-      --       Snacks.dim.enable()
-      --       snacks_dim_active = true
-      --     end
-      --   end,
-      --   desc = "Dim"
-      -- },
-      -- {
-      --   "<leader>:",
-      --   function()
-      --     Snacks.picker.command_history()
-      --   end,
-      --   desc = "Command History"
-      -- },
-      -- {
-      --   "<leader>n",
-      --   function()
-      --     Snacks.picker.notifications()
-      --   end,
-      --   desc = "Notification History"
-      -- },
+      {
+        "<leader>n",
+        function()
+          Snacks.picker.notifications()
+        end,
+        desc = "Notification History"
+      },
       {
         "<leader>tc",
         function()
@@ -162,6 +143,47 @@ local snacks = {
         end,
         desc = "Buffers"
       },
+      {
+        "<leader>tB",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.grep_buffers()
+        end,
+        desc = "Grep Open Buffers"
+      },
+      {
+        "<leader>cd",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = "Buffer Diagnostics"
+      },
+      {
+        "<leader>cD",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = "Diagnostics"
+      },
+      {
+        "<leader>cr",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = "List References"
+      },
+      {
+        "<leader>ci",
+        function()
+          local Snacks = require('snacks')
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = "Goto Implementation"
+      },
       -- git
       -- { "<leader>gb", function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
       {
@@ -179,47 +201,6 @@ local snacks = {
       -- Grep
       -- { "<leader>sb", function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
       {
-        "<leader>tB",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.grep_buffers()
-        end,
-        desc = "Grep Open Buffers"
-      },
-      {
-        "<leader>td",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.diagnostics()
-        end,
-        desc = "Diagnostics"
-      },
-      {
-        "<leader>tD",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.diagnostics_buffer()
-        end,
-        desc = "Buffer Diagnostics"
-      },
-      {
-        "<leader>tr",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.lsp_references()
-        end,
-        nowait = true,
-        desc = "References"
-      },
-      {
-        "<leader>ti",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.lsp_definitions()
-        end,
-        desc = "Goto Implementation"
-      },
-      {
         "<leader>gf",
         function()
           local Snacks = require('snacks')
@@ -227,26 +208,7 @@ local snacks = {
         end,
         desc = "Show Symbols"
       },
-      {
-        "<leader>gw",
-        function()
-          local Snacks = require('snacks')
-          Snacks.picker.lsp_workspace_symbols()
-        end,
-        desc = "Show Symbols"
-      },
     }
-    --   opts = function()
-    --     local Snacks = require('folk')
-    --     -- Toggle the profiler
-    --     Snacks.toggle.profiler():map("<leader>pp")
-    --     -- Toggle the profiler highlights
-    --     Snacks.toggle.profiler_highlights():map("<leader>ph")
-    --   end,
-    --   keys = {
-    --     { "<leader>ps", function() Snacks.profiler.scratch() end, desc = "Profiler Scratch Bufer" },
-    --   }
-    -- },
   }
 }
 

@@ -6,42 +6,17 @@ local harpoon_spec = {
       function()
         require('harpoon.mark').add_file()
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Add to Harpoon"
     },
     {
       '<leader>hh',
       function()
         require('harpoon.ui').toggle_quick_menu()
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Toggle Harpoon"
     },
-  }
-}
-
-local toggle_term_spec = {
-  "akinsho/toggleterm.nvim",
-  config = function()
-    require("toggleterm").setup()
-  end,
-  keys = {
-    -- {
-    --   '<M-1>',
-    --   ':ToggleTerm direction=vertical<CR>',
-    --   mode = 'n',
-    --   noremap = true
-    -- },
-    -- {
-    --   '<M-2>',
-    --   ':ToggleTerm direction=horizontal<CR>',
-    --   mode = 'n',
-    --   noremap = true
-    -- },
-    -- {
-    --   '<ESC>',
-    --   '<C-\\><C-n>',
-    --   mode = 't',
-    --   desc = 'Exit terminal mode.'
-    -- },
   }
 }
 
@@ -191,26 +166,47 @@ local diagram_spec = {
 local which_key_spec = {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  enabled = false,
   opts = {
-    triggers = {},
-    preset = 'helix',
-    plugins = {},
-  },
-  config = function()
-    local wk = require('which-key')
-    wk.add({
-      { '<leader>t', group = 'Explore' }
-    })
-  end,
-  keys = {
-    {
-      "<leader>wk",
-      function()
-        require("which-key").show({ global = true })
-      end,
-      desc = "Buffer Local Keymaps (which-key)",
+    preset = "helix",   -- Modern and clean visual layout
+    delay = 300,        -- Wait 300ms before showing the popup
+    plugins = {
+      marks = true,     -- Show marks on ' and `
+      registers = true, -- Show registers
+      spelling = {
+        enabled = true, -- Show suggestions when using z=
+        suggestions = 20,
+      },
     },
+    icons = {
+      mappings = true, -- Enable icons for mapped keys
+    },
+    spec = {
+      -- ["<leader>s"] = { group = "Specter - Search/Replace Tool" }
+      { "<leader>s", group = "Specter - Search/Replace Tool" },
+      { "<leader>g", group = "Git" },
+      { "<leader>t", group = "Snack Explorer" },
+      { "<leader>b", group = "Buffer Utils" },
+      { "<leader>h", group = "Harpoon" },
+      { "<leader>c", group = "Code" }
+    },
+    triggers = {
+      { "<leader>", mode = { "n", "v" } },
+      { "<auto>", mode = "nixsotc" },
+    }
+  },
+  -- config = function(_, opts)
+  --   local wk = require("which-key")
+  --   wk.setup(opts)
+  --   wk.register(opts.defaults)
+  -- end,
+  keys = {
+    -- {
+    --   "<leader>?",
+    --   function()
+    --     require("which-key").show({ global = true })
+    --   end,
+    --   desc = "Buffer Local Keymaps (which-key)",
+    -- },
   },
 }
 
@@ -273,7 +269,6 @@ local newscroll_spec = {
 
 local M = {
   harpoon_spec = harpoon_spec,
-  toggle_term_spec = toggle_term_spec,
   notify_spec = notify_spec,
   winresizer_spec = winresizer_spec,
   plenary_spec = plenary_spec,

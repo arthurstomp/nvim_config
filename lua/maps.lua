@@ -18,7 +18,7 @@ end
 -- map('i', 'kk', '<Esc>')
 
 -- Clear search highlighting with <leader> and c
-map('n', '<leader>h', ':nohl<CR>')
+map('n', '<leader>h', ':nohl<CR>', { desc = "Clear search highlight"})
 
 -- Change split orientation
 map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
@@ -34,11 +34,7 @@ map('n', '<S-l>', ':BufferLineCycleNext<CR>')
 map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
 map('n', '<M-l>', ':tabnext<CR>')
 map('n', '<M-h>', ':tabprev<CR>')
-map('n', '<leader>c', ':bd<CR>')
-map('n', '<leader>C', ':Bufonly<CR>')
-
-
-map('n', '<leader>r', ':WinResizerStartResize <CR>')
+map('n', '<leader>bd', ':bd<CR>', { desc = "Close buffer"})
 
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle line comment" })
 vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle selection comment" })
@@ -49,13 +45,13 @@ vim.keymap.set('n', '<leader>br', ':BufferLineCloseRight<CR>', { desc = "Close b
 vim.keymap.set('n', '<leader>e', ":let @+ = expand('%:.')<CR>",
   { desc = "Copy current buffer relative filepath to clipboard" })
 
-vim.api.nvim_set_keymap('v', '<Leader>w', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<Leader>W', '"+Y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>W', '"+Y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<Leader>w', '"+y', { noremap = true, silent = true, desc = "Copy selection to clipboard" })
+vim.api.nvim_set_keymap('v', '<Leader>W', '"+Y', { noremap = true, silent = true, desc = "Copy selected lines to clipboard"})
+vim.api.nvim_set_keymap('n', '<Leader>W', '"+Y', { noremap = true, silent = true, desc = "Copy line to clipboard" })
 
 vim.keymap.set('n', '<Leader>z', function()
   require('lazy_plugins.wttr').wttr()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Weather forecast" })
 
 ToggleTerm = function(direction)
   local terminal = require('snacks').terminal
@@ -82,4 +78,4 @@ vim.keymap.set("n", "<M-2>", toggle_term_horizontal, { noremap = true, silent = 
 
 vim.keymap.set({ "n", "x" }, "<leader>ca", function()
   require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Tiny code actions" })

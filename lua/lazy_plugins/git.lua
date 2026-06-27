@@ -2,7 +2,7 @@ local neogit = {
   "NeogitOrg/neogit",
   lazy = true,
   keys = {
-    { "<leader>ng", "<cmd>Neogit<cr>", desc = "Neogit" },
+    { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
     {
       'dc',
       ':DiffviewClose<CR>',
@@ -60,7 +60,7 @@ local lazygit = {
   -- setting the keybinding for LazyGit with 'keys' is recommended in
   -- order to load the plugin when the command is run for the first time
   keys = {
-    { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" }
   }
 }
 
@@ -86,7 +86,7 @@ local gitsigns_spec = {
       desc = "Previous git hunk"
     },
     {
-      "<leader>hd",
+      "<leader>gd",
       function()
         local gitsigns = require('gitsigns')
         gitsigns.diffthis()
@@ -94,7 +94,7 @@ local gitsigns_spec = {
       desc = "Diff this"
     },
     {
-      "<leader>hb",
+      "<leader>gb",
       function()
         local gitsigns = require('gitsigns')
         gitsigns.toggle_current_line_blame()

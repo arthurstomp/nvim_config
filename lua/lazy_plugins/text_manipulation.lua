@@ -10,28 +10,40 @@ local specter_spec = {
       function()
         require("spectre").toggle()
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Toggle Specter - Search/Replace Tool"
     },
     {
       '<leader>sw',
       function()
         require("spectre").open_visual({ select_word = true })
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Open Specter - Search word under cursor"
     },
     {
       '<leader>sw',
       function()
         require("spectre").open_visual()
       end,
-      mode = 'v'
+      mode = 'v',
+      desc = "Open Specter - Search selection"
     },
     {
-      '<leader>sp',
+      '<leader>sf',
       function()
         require("spectre").open_file_search({ select_word = true })
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Open Specter - Search word under cursor in current file"
+    },
+    {
+      '<leader>sf',
+      function()
+        require("spectre").open_file_search()
+      end,
+      mode = 'v',
+      desc = "Open Specter - Search selection in current file"
     },
   }
 }
@@ -45,7 +57,8 @@ local undotree_spec = {
       function()
         vim.cmd.UndotreeToggle()
       end,
-      mode = 'n'
+      mode = 'n',
+      desc = "Undotree"
     }
   }
 }
