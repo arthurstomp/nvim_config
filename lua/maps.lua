@@ -35,6 +35,8 @@ map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
 map('n', '<M-l>', ':tabnext<CR>')
 map('n', '<M-h>', ':tabprev<CR>')
 map('n', '<leader>bd', ':bd<CR>', { desc = "Close buffer"})
+map('n', '<leader>%', ':vsplit<CR>', { desc = "Split Vertical"})
+map('n', '<leader>-', ':split<CR>', { desc = "Split Horizontally"})
 
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle line comment" })
 vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "Toggle selection comment" })
