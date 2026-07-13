@@ -73,7 +73,13 @@ local gitsigns_spec = {
       "]c",
       function()
         local gitsigns = require('gitsigns')
-        gitsigns.nav_hunk("next")
+
+        if vim.wo.diff then
+          vim.cmd.normal({ ']c', bang = true })
+        else
+          gitsigns.nav_hunk('next')
+        end
+        vim.cmd('normal! zz')
       end,
       desc = "Next git hunk"
     },
@@ -81,7 +87,13 @@ local gitsigns_spec = {
       "[c",
       function()
         local gitsigns = require('gitsigns')
-        gitsigns.nav_hunk("prev")
+
+        if vim.wo.diff then
+          vim.cmd.normal({ '[c', bang = true })
+        else
+          gitsigns.nav_hunk('prev')
+        end
+        vim.cmd('normal! zz')
       end,
       desc = "Previous git hunk"
     },
@@ -101,8 +113,33 @@ local gitsigns_spec = {
       end,
       desc = "Toggle current line blame"
     },
+    {
+      "<leader>gp",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.preview_hunk()
+      end,
+      desc = "Preview hunk"
+    },
+    {
+      "<leader>gs",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.stage_hunk()
+      end,
+      desc = "Stage hunk"
+    },
+    {
+      "<leader>gr",
+      function()
+        local gitsigns = require('gitsigns')
+        gitsigns.reset_hunk()
+      end,
+      desc = "Reset hunk"
+    },
   }
 }
+
 
 local diffview_spec = { "sindrets/diffview.nvim" }
 

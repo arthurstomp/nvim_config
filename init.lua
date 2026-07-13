@@ -32,15 +32,16 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 vim.opt.conceallevel = 2
-vim.opt.foldmethod = "syntax"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
 
 require('lazy_setup')
 require('maps')
 
 vim.cmd [[colorscheme tokyonight-moon]]
--- vim.notify = require('notify')
 vim.filetype.add {
   pattern = {
     ['openapi.ya?ml'] = 'yaml.openapi',
@@ -49,6 +50,7 @@ vim.filetype.add {
     ['.env.development.local'] = 'sh',
     ['.env.test'] = 'sh',
     ['.env.production'] = 'sh',
+    ['.env'] = 'sh',
     ['*.norg'] = 'neorg',
   },
 }

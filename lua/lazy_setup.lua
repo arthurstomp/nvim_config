@@ -28,7 +28,7 @@ require("lazy").setup({
     require('lazy_plugins/lsp_setup').lsp,
     require('lazy_plugins/lsp_setup').tiny_code_actions,
     require('lazy_plugins/git').neogit,
-    require('lazy_plugins/git').fugitive,
+    -- require('lazy_plugins/git').fugitive,
     require('lazy_plugins/git').lazygit,
     require('lazy_plugins/git').gitsigns_spec,
     require('lazy_plugins/git').diffview_spec,
@@ -58,6 +58,8 @@ require("lazy").setup({
     require('lazy_plugins/ui').which_key_spec,
     require('lazy_plugins/ui').lualine_spec,
     require('lazy_plugins/ui').scope,
+    require('lazy_plugins/ui').lazydocker,
     require('lazy_plugins/network').remote_sshfs,
+    { "elkowar/yuck.vim" }
   },
 })

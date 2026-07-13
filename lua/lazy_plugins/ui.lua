@@ -165,7 +165,8 @@ local which_key_spec = {
       { "<leader>h", group = "Harpoon" },
       { "<leader>c", group = "Code" },
       { "<leader>k", group = "Notification Utils" },
-      { "<leader>n", group = "Neorg" }
+      { "<leader>n", group = "Neorg" },
+      { "<leader>l", group = "Lazy Docker" }
     },
     triggers = {
       { "<leader>", mode = { "n", "v" } },
@@ -220,15 +221,26 @@ local telescope_spec = {
   end
 }
 
--- NOTE: Commented in case i need FZF on telescope
--- local telescope_fzf_native_spec = {
---   'nvim-telescope/telescope-fzf-native.nvim',
---   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
--- }
-
-local newscroll_spec = {
-  "karb94/neoscroll.nvim",
-  opts = {},
+local lazydocker = {
+  "mgierada/lazydocker.nvim",
+  dependencies = { "akinsho/toggleterm.nvim" },
+  config = function()
+    require("lazydocker").setup({
+	    border = "curved", -- valid options are "single" | "double" | "shadow" | "curved"
+	    width = 0.9, -- width of the floating window (0-1 for percentage, >1 for absolute columns)
+	    height = 0.9, -- height of the floating window (0-1 for percentage, >1 for absolute rows)
+    })
+  end,
+  event = "BufRead",
+  keys = {
+    {
+      "<leader>ld",
+      function()
+        require("lazydocker").open()
+      end,
+      desc = "Open Lazydocker floating window",
+    },
+  },
 }
 
 local M = {
@@ -244,7 +256,7 @@ local M = {
   lualine_spec = lualine_spec,
   telescope_spec = telescope_spec,
   bufresize_spec = bufresize_spec,
-  newscroll_spec = newscroll_spec,
+  lazydocker = lazydocker,
   scope = scope
 }
 

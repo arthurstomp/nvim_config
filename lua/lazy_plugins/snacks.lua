@@ -22,6 +22,7 @@ local snacks = {
           explorer = {
             enabled = true,
             hidden = true,
+            ignored = true,
             auto_close = false,
             win = {
               list = {

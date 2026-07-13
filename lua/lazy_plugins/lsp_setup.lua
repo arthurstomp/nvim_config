@@ -43,66 +43,12 @@ local lsp = {
       end,
     })
 
-    local util = require 'lspconfig.util'
-    -- vim.lsp.config('solargraph', {
-    --   cmd = { os.getenv("HOME") .. "/.asdf/shims/solargraph", 'stdio' },
-    --   settings = {
-    --     solargraph = {
-    --       useBundler = false,
-    --     },
-    --     root_dir = util.root_pattern('.git', 'Gemfile', '.', '/home/stomp/work/monograph/code/monograph/apps/api'),
-    --   },
-    -- })
-    -- vim.lsp.enable('solargraph')
-    vim.lsp.config('ruby_lsp', {
-      -- cmd = { os.getenv("HOME") .. "/.asdf/shims/ruby-lsp", 'stdio' },
-    })
+    vim.lsp.config('ruby_lsp', { })
     vim.lsp.enable('ruby_lsp')
-
-    -- require('mason').setup({
-    --   ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'prettier', 'standardrb', 'solargraph', 'erb-formatter' },
-    -- })
-    -- require('mason-lspconfig').setup({
-    --   ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'standardrb', 'solargraph' },
-    --   handlers = {
-    --     -- this first function is the "default handler"
-    --     -- it applies to every language server without a "custom handler"
-    --     function(server_name)
-    --       -- require('lspconfig')[server_name].setup({})
-    --       -- require('lspconfig')['eslint'].setup({})
-    --       -- require('lspconfig')['tailwindcss'].setup({})
-    --       -- require('lspconfig')['erb-formatter'].setup({})
-    --       -- require('lspconfig').standardrb.setup({enabled = false})
-    --       require('lspconfig')['solargraph'].setup(
-    --         {
-    --           cmd = { '/home/stomp/.asdf/shims/solargraph', 'stdio' },
-    --           settings = {
-    --             solargraph = {
-    --               diagnostics = true,
-    --             },
-    --           },
-    --           init_options = { formatting = false },
-    --           filetypes = { 'ruby' },
-    --           root_dir = util.root_pattern('Gemfile', '.git'),
-    --         }
-    --       )
-    --       require('lspconfig')['ruby_lsp'].setup({ enabled = false })
-    --       require('lspconfig').lua_ls.setup({
-    --         settings = {
-    --           diagnostics = {
-    --             globals = {
-    --               'vim'
-    --             }
-    --           }
-    --         }
-    --       })
-    --     end,
-    --   }
-    -- })
   end,
   keys = {
     {
-      '<leader>l',
+      '<leader>cl',
       ':LspRestart<CR>',
       mode = 'n',
       desc = 'Restart LSP.'
